@@ -1,0 +1,79 @@
+@import "reset"
+@import "var"
+@import "slots-style"
+
+
+.container
+  max-width: 1400px
+  padding: 0 15px
+  width: 100%
+  margin: 0 auto
+
+.default-hero__item
+  margin-bottom: 15px
+
+  &:last-of-type
+    margin-bottom: 0
+
+.char__wrap
+  display: flex
+  align-items: center
+  justify-content: flex-start
+
+.char__title
+  font-size: 16px
+  color: #ccc
+  text-transform: uppercase
+  margin-right: 10px
+  min-width: 166px
+
+.char__subtitle
+  font-size: 15px
+  color: #e1e112
+
+.default-title
+  text-align: center
+  color: white
+  text-transform: uppercase
+  font-size: 25px
+  font-weight: 500
+
+.header
+  padding: 25px 0
+  box-shadow: 1px 1px 1px #ccc
+  background-color: rgba(0, 0, 0, .8)
+
+  &-wrap
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+    .header-title
+      font-size: 25px
+      font-weight: 700
+      color: $white
+
+    .header-subtitle__red
+      color: $red
+
+.default-favorite__inner
+  margin-left: 15px
+  display: flex
+  align-items: center
+
+  .favorite-title
+    font-size: 14px
+    font-weight: 500
+    color: $white
+
+  .favorite-counter
+    padding: 5px
+    background-color: orange
+    border-radius: 50%
+    width: 20px
+    height: 20px
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-left: 5px
+    font-size: 12px

@@ -1,28 +1,64 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="wrap">
+    <template>
+      <app-header
+        v-if="$route.meta.defaultHeader"
+      />
+      <alternative-header
+        v-else
+      />
+    </template>
+    <router-view/>
+    <default-modal
+      v-if="modalIsOpen"
+    >
+      <template #modal-error>
+        <button
+          class="close-modal reset-btn"
+          @click="closeModal"
+        >
+          <img src="@/assets/images/icon/clear-icon.svg" alt="">
+        </button>
+        <p class="default-modal__text">Sorry no result!</p>
+      </template>
+    </default-modal>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import appHeader from '@/components/app-header'
+import defaultModal from '@/components/modals/default-modal'
+import alternativeHeader from "@/components/alternative-header";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    alternativeHeader,
+    defaultModal,
+    appHeader
+  },
+  created() {
+    if(this.$route.fullPath === '/') {
+      this.$router.replace('/hero')
+    }
+  },
+  methods: {
+    closeModal() {
+      this.$store.commit('setModalIsOpen', false)
+    }
+  },
+  computed: {
+    modalIsOpen() {
+      return this.$store.getters.modalIsOpen
+    }
+  },
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+.wrap
+  background-color: #96b1a9
+  display: grid
+  grid-auto-rows: auto 1fr auto
+  min-height: 100vh
 </style>
